@@ -16,7 +16,7 @@ method comerA(unRaton) {
 } 
 method puedeCazar(distancia) = energiaActual >= distancia
  method cazarASiPuede(unRaton, distancia) {
-   if (puedeCazar(distancia)){
+   if (self.puedeCazar(distancia)){
     self.comerA(unRaton)
    }
  }
