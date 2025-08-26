@@ -14,11 +14,15 @@ method comerA(unRaton) {
     energiaActual = energiaActual + 12 + unRaton.peso()
     ultimoRatonComido = unRaton
 } 
-method puedeCazar(distancia) = energiaActual >= distancia
+method puedeCazarA(distancia) = energiaActual >= (distancia / 2)
  method cazarASiPuede(unRaton, distancia) {
-   if (self.puedeCazar(distancia)){
-    self.comerA(unRaton)
+   if (self.puedeCazarA(distancia)){
+    self.cazarA(unRaton, distancia)
    }
+ }
+ method cazarA(unRaton, distancia) {
+   self.correr(distancia)
+   self.comerA(unRaton)
  }
 }
 
@@ -36,3 +40,13 @@ object nibbles {
 }
 
 // Inventar otro ratón
+
+object glutty {
+  var pesoActual = 50
+  method cantidadDeQuesoParaLlenarse() = self.peso()*0.05
+
+  method peso() = pesoActual
+  method comerQueso() {
+    pesoActual = pesoActual + self.cantidadDeQuesoParaLlenarse()
+  }
+}
